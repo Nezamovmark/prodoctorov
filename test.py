@@ -83,9 +83,9 @@ def write_to_disk(road, otchet):
         
 
 def write_error(dir, name):  #функция удаления неполного файла
-    print('Сбой во время записи в файл.')
-    old_name = os.path.join(dir, name+"_old"+".txt")
-    new_name = os.path.join(dir, name+".txt")
+    print('Сбой во время записи в файл: ' + name + ".txt")
+    old_name = os.path.join(dir, name + "_old" + ".txt")
+    new_name = os.path.join(dir, name + ".txt")
     os.remove(new_name)
     if os.path.exists(old_name):
         os.renames(old_name, new_name)
