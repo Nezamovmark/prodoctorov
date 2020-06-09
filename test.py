@@ -43,7 +43,7 @@ def write_to_disk(road, otchet):
             t2 = os.stat(old_name).st_mtime
             new_name = os.path.join(road, otchet.username + "_" +
                                     datetime.datetime.fromtimestamp(t2).
-                                    strftime('%Y-%m-%dT%H-%M-%S')
+                                    strftime('%Y-%m-%dT%H:%M:%S')
                                     + ".txt")
             os.renames(temporary_name, new_name)
             
