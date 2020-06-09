@@ -36,14 +36,14 @@ def tasks(report): # функция собирает все задачи пол�
 def write_to_disk(road, otchet):  
     file_name = os.path.join(road, otchet.username + '.txt')
     if os.path.exists(file_name):                                    
-        temporary_name = os.path.join(road, otchet.username +"_old" + ".txt") 
+        temporary_name = os.path.join(road, otchet.username + "_old" + ".txt") 
         os.renames(file_name, temporary_name)
         if write_to_disk(road, otchet) == 0:                           
             old_name = os.path.join(road, otchet.username + "_old" + ".txt")
             t2 = os.stat(old_name).st_mtime
             new_name = os.path.join(road, otchet.username + "_" +
                                     datetime.datetime.fromtimestamp(t2).
-                                    strftime('%Y-%m-%dT%H:%M:%S')
+                                    strftime('%Y-%m-%dT%H:%M')
                                     + ".txt")
             os.renames(temporary_name, new_name)
             
@@ -120,7 +120,8 @@ try:
                              
         report.completed_tasks.clear()
         report.unfinished_tasks.clear()
-        page = urllib.request.urlopen(API_USERS + str(int(report.id_user) + 1))
+        page = urllib.request.urlopen(API_USERS + 
+                                      str(int(report.id_user) + 1))
         stroka = page.readlines()
 except IOError:
     print('Сбой в доступе к API')
