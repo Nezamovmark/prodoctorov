@@ -87,7 +87,9 @@ def write_error(dir, name):  #функция удаления неполного
     old_name = os.path.join(dir, name+"_old"+".txt")
     new_name = os.path.join(dir, name+".txt")
     os.remove(new_name)
-    os.renames(old_name, new_name)
+    if os.path.exists(old_name):
+        os.renames(old_name, new_name)
+        
 
 
 dir = os.path.abspath(os.curdir)
